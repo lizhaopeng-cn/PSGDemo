@@ -1,4 +1,5 @@
 apply plugin: 'com.android.application'
+apply plugin: 'com.google.gms.google-services'
 
 android {
     compileSdkVersion 30
@@ -6,7 +7,8 @@ android {
 
     defaultConfig {
         applicationId "com.yostar.psgdemo"
-        minSdkVersion 14
+//        applicationId "com.Yostar.sdkpgs"
+        minSdkVersion 19
         targetSdkVersion 30
         versionCode 1
         versionName "1.0"
@@ -15,12 +17,6 @@ android {
     }
 
     signingConfigs {
-        debugCc {
-            keyAlias 'jephy'
-            keyPassword 'yongshi'
-            storeFile file('D:/Yostar/keystore/jephy.keystore')
-            storePassword 'yongshi'
-        }
         uu {
             storeFile file('D:/Yostar/keystore/sample_01.keystore')
             keyAlias = 'sample_01.keystore'
@@ -45,6 +41,12 @@ android {
         sourceCompatibility 1.8
         targetCompatibility 1.8
     }
+
+    repositories {
+        flatDir {
+            dirs 'libs'
+        }
+    }
 }
 
 dependencies {
@@ -57,4 +59,9 @@ dependencies {
 
     implementation "com.google.android.gms:play-services-games:+"
     implementation 'com.google.android.gms:play-services-auth:+'
+//
+    implementation platform('com.google.firebase:firebase-bom:28.4.0')
+//    implementation 'com.google.firebase:firebase-analytics'
+
+//    implementation(name: 'play-services-games-v2-16.0.0-eap', ext: 'aar')
 }
