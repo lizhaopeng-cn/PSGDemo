@@ -1,14 +1,12 @@
 apply plugin: 'com.android.application'
-apply plugin: 'com.google.gms.google-services'
 
 android {
     compileSdkVersion 30
     buildToolsVersion "30.0.3"
 
     defaultConfig {
-        applicationId "com.yostar.psgdemo"
-//        applicationId "com.yostar.psgv2"
-        minSdkVersion 19
+        applicationId "com.yostar.psgv2"
+        minSdkVersion 21
         targetSdkVersion 30
         versionCode 1
         versionName "1.0"
@@ -18,14 +16,19 @@ android {
 
     signingConfigs {
         uu {
+//            sha1:BC:EB:B4:A3:DF:FE:1B:66:4B:08:48:06:1E:35:6D:08:1E:9A:85:EA
             storeFile file('D:/Yostar/keystore/sample_01.keystore')
             keyAlias = 'sample_01.keystore'
             storePassword '123456'
             keyPassword '123456'
+            v1SigningEnabled true
+            v2SigningEnabled true
         }
     }
+
     buildTypes {
         debug {
+//            sha1:EB:FA:81:BB:34:2F:A9:FE:AB:70:4A:9C:BB:7A:1B:F3:2C:A7:F4:59
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
             signingConfig signingConfigs.uu
@@ -57,9 +60,7 @@ dependencies {
     androidTestImplementation 'androidx.test.ext:junit:1.1.3'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
 
-    implementation "com.google.android.gms:play-services-games:+"
     implementation 'com.google.android.gms:play-services-auth:+'
-//
-//    implementation platform('com.google.firebase:firebase-bom:28.4.0')
-//    implementation 'com.google.firebase:firebase-analytics'
+    implementation(name: 'play-services-games-v2-16.0.0-eap', ext: 'aar')
+
 }

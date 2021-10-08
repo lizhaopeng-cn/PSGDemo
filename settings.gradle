@@ -1,2 +1,4 @@
+include ':app2'
+include ':appv2'
 include ':app'
 rootProject.name = "PSGDemo"
